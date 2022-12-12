@@ -102,12 +102,22 @@ def test_multi_4(div_mock):
     assert a.div(0) == 1
 
 
-def test_mock_an_object():
+def test_mock_an_object_property_method_1():
     """
     test mock an object
     :return:
     """
     a = A(2)
-    a.connection = MagicMock()
-    a.connection.get_data.return_value = 99
+    a._connection = MagicMock()
+    a._connection.get_data.return_value = 99
     assert a.connection.get_data() == 99
+
+
+def test_mock_an_object_property_method_2():
+    """
+    test mock an object
+    :return:
+    """
+    a = A(2)
+    a._connection = MagicMock(get_data=MagicMock(return_value=1099))
+    assert a.connection.get_data() == 1099
