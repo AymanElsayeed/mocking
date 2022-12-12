@@ -90,14 +90,19 @@ def test_multi_2(div_mock):
 
 
 @mock.patch("tests.test_inht.C.div", return_value=my_dev2())
-def test_multi_3(div_mock):
+def test_mock_c_div(div_mock):
     a = B(2)
+    # because B.div is not mocked, and B.div calls A.div
+    # so A.div will be called
+    # the mock useless in this case
     with pytest.raises(ZeroDivisionError):
         assert a.div(0) == 1
 
 
 @mock.patch("tests.test_inht.B.div", return_value=my_dev2())
-def test_multi_4(div_mock):
+def test_mock_b_div(div_mock):
+    # because B.div is mocked, so C.div will be mocked too
+    # because C does not have div method, so it will get it from B
     a = C(2)
     assert a.div(0) == 1
 
