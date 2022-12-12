@@ -20,7 +20,7 @@ def my_dev2():
 
 
 @mock.patch("tests.test_inht.A", return_value=MagicMock(n=991))
-def test_mock_instance_attribute(m):
+def test_mock_instance_attribute_method_1(mock_attribute):
     """
     test mock instance attribute
     :param m:
@@ -28,6 +28,16 @@ def test_mock_instance_attribute(m):
     """
     a = A(2)
     assert a.n == 991
+
+
+def test_mock_instance_attribute_method_2():
+    """
+    test mock instance attribute
+    :return:
+    """
+    a = A(2)
+    a = MagicMock(n=995)
+    assert a.n == 995
 
 
 def test_mock_instance_property(mocker):
