@@ -23,7 +23,7 @@ def my_dev2():
 def test_mock_instance_attribute_method_1(mock_attribute):
     """
     test mock instance attribute
-    :param m:
+    :param mock_attribute:
     :return:
     """
     a = A(2)
