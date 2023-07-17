@@ -30,6 +30,11 @@ class B(A):
         super().__init__(n)
 
     def add(self, n):
+        """
+        add n to self.n
+        :param n: n plus self.n
+        :return:
+        """
         self.n += n
 
 
