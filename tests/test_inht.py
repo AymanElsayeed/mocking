@@ -9,6 +9,7 @@ from unittest.mock import MagicMock, PropertyMock
 import pytest
 import src.inht
 from src.inht import *
+from src.nfs import get_two
 
 
 def my_dev():
@@ -75,7 +76,7 @@ def test_mocking_a_object_function_div_method_2(div_mock):
 
 
 @mock.patch("tests.test_inht.A.div", return_value=my_dev())
-def test_a_div_oringinal(div_mock):
+def test_a_div_original(div_mock):
     a = A(0)
     assert a.div(0) == 11
 
@@ -136,3 +137,12 @@ def test_mock_an_object_property_method_2():
     a = A(2)
     a._connection = MagicMock(get_data=MagicMock(return_value=1099))
     assert a.connection.get_data() == 1099
+
+
+# @mock.patch("src.nfs.get_two", return_value=4)
+def test_a_1():
+    # div_mock.param.return_value = 4
+    # get_two.param = mock.Mock(return_value=3)
+    get_two.param = 4
+    # assert get_two() == 8
+    assert get_two.param == 4

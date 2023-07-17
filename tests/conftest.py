@@ -38,3 +38,17 @@ def connection_object_get_data(connection_mock_1):
 def connection_object_send_data(connection_mock_1):
     connection = Connection("updated message1")
     return connection.get_data()
+
+
+@fixture(name="monkeypatch_connection")
+def connection_object_send_data(monkeypatch) -> Connection:
+    connection = Connection("updated message1")
+    monkeypatch.setattr(connection, "get_data", lambda: "send message")
+    return connection
+
+
+@fixture(name="monkeypatch_connection_global_data")
+def connection_object_send_data(monkeypatch) -> Connection:
+    monkeypatch.setattr(Connection, "global_data", 0)
+    connection = Connection("updated message1")
+    return connection
