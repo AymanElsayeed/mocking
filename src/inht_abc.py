@@ -17,6 +17,10 @@ class A(ABC):
 
     @property
     def plus_one(self):
+        """
+        add one to n
+        :return: n plus one
+        """
         return self.n + 1
 
     @plus_one.setter
