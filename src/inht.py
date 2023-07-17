@@ -1,3 +1,9 @@
+"""
+
+This module is used to test the inheritance of classes.
+
+"""
+
 from connection.db import PostgresConnection
 from connection import r_client
 
