@@ -3,8 +3,8 @@ from pytest import fixture
 from unittest import mock
 
 from src.inht import C, B, A, r_client
-from con.db import PostgresConnection
-from con.rredis import RedisClient
+from connection.db import PostgresConnection
+from connection.rredis import RedisClient
 
 
 @fixture()
@@ -16,7 +16,7 @@ def mock_postgres_connection_method_1():
 
 @fixture()
 def mock_postgres_connection_method_2():
-    with mock.patch("con.db.PostgresConnection.get_data", return_value=147):
+    with mock.patch("connection.db.PostgresConnection.get_data", return_value=147):
         a = A(2)
         yield a
 
@@ -40,8 +40,8 @@ def nested_parametrized_mock_objects_method_1(request):
 @fixture(params=[(A, 210), (B, 220), (C, 230)])
 def nested_parametrized_mock_objects_method_2(request):
     cls_obj, value = request.param
-    with mock.patch("con.db.PostgresConnection.get_data", return_value=value):
-        with mock.patch("con.rredis.RedisClient.get_data", return_value=value):
+    with mock.patch("connection.db.PostgresConnection.get_data", return_value=value):
+        with mock.patch("connection.rredis.RedisClient.get_data", return_value=value):
             yield cls_obj(value), value
 
 

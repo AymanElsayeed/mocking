@@ -3,8 +3,8 @@ from pytest import fixture
 
 
 from src.inht import C, B, A, r_client
-from con.db import PostgresConnection
-from con.rredis import RedisClient
+from connection.db import PostgresConnection
+from connection.rredis import RedisClient
 
 
 def get_data():
@@ -18,7 +18,7 @@ class MockPostgresConnection:
         return self.name
 
 
-@mock.patch("con.db.PostgresConnection.get_data", return_value=get_data())
+@mock.patch("connection.db.PostgresConnection.get_data", return_value=get_data())
 def test_mock_c_postgres_obj_indirect_method_1(indirect_mock):
     c = C(2)
     assert c.connection.get_data() == 6
@@ -47,6 +47,6 @@ def test_mock_redis_client_method_1(indirect_mock):
     assert r_client.get_data() == 789
 
 
-@mock.patch("con.rredis.RedisClient.get_data", return_value=450)
+@mock.patch("connection.rredis.RedisClient.get_data", return_value=450)
 def test_mock_redis_client_method_2(indirect_mock):
     assert r_client.get_data() == 450

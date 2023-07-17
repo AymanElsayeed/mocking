@@ -1,5 +1,5 @@
-from con.db import PostgresConnection
-from con import r_client
+from connection.db import PostgresConnection
+from connection import r_client
 
 
 class A:

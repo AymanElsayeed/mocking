@@ -1,3 +1,3 @@
-from con.rredis import RedisClient
+from connection.rredis import RedisClient
 
 r_client = RedisClient()
