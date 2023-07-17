@@ -2,6 +2,7 @@
 abstract base class for inht
 
 """
+
 from abc import ABC, abstractmethod
 
 
