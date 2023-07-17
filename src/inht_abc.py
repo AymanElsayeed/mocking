@@ -34,7 +34,13 @@ class B(A):
     def __init__(self, n):
         super().__init__(n)
 
-    def add(self, n):
+    def add(self, n) -> int:
+        """
+        add n to self.n
+        :param n: n
+        :return: n plus self.n
+        :rtype: int
+        """
         self.n += n
 
 
