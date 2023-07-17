@@ -22,7 +22,8 @@ class A(ABC):
         add one to n
         :return: n plus one
         """
-        return self.n + 1
+        results = self.n + 1
+        return results
 
     @plus_one.setter
     def plus_one(self, value):
