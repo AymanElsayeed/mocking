@@ -1,6 +1,7 @@
 from pytest import fixture
 from unittest import mock
 from src.nfs import *
+from globals import *
 
 
 @fixture()
@@ -15,6 +16,7 @@ def init_connection():
     class temp(Connection):
         def send_data(self):
             return 123
+
     c = temp()
     return c
 
@@ -52,3 +54,8 @@ def connection_object_send_data(monkeypatch) -> Connection:
     monkeypatch.setattr(Connection, "global_data", 0)
     connection = Connection("updated message1")
     return connection
+
+
+@fixture(name="monkeypatch_fixture_scope_session", scope="function", autouse=True)
+def monkeypatch_fixture_scope_session(monkeypatch):
+    monkeypatch.setattr(my_object, "value", "value")
